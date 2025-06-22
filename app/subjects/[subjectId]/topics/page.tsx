@@ -9,6 +9,12 @@ export default function TopicsPage() {
   const params = useParams()
   const subjectId = params.subjectId as string
 
+  // Add this near the top of the component, after the params declaration
+  const [subjectInfo] = useState({
+    name: "Mathematics",
+    gradeName: "Grade 10", // This should come from the actual data
+  })
+
   // Mock data for now
   const [topics] = useState([
     {
@@ -52,14 +58,14 @@ export default function TopicsPage() {
             All Grades
           </Link>
           <span className="mx-2 text-gray-400">/</span>
-          <Link href={`/grades/1/subjects`} className="text-blue-600 hover:text-blue-800">
-            Subjects
+          <Link href={`/grades/10/subjects`} className="text-blue-600 hover:text-blue-800">
+            {subjectInfo.gradeName} Subjects
           </Link>
           <span className="mx-2 text-gray-400">/</span>
-          <span className="text-gray-600">Topics</span>
+          <span className="text-gray-600">{subjectInfo.name} Topics</span>
         </nav>
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Mathematics Topics</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{subjectInfo.name} Topics</h1>
         <p className="text-lg text-gray-600">Select a topic to access video lessons and learning materials</p>
       </div>
 

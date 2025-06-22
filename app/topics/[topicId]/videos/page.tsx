@@ -9,6 +9,13 @@ export default function VideosPage() {
   const params = useParams()
   const topicId = params.topicId as string
 
+  // Add this near the top of the component, after the params declaration
+  const [topicInfo] = useState({
+    name: "Algebraic Expressions",
+    subjectName: "Mathematics",
+    gradeName: "Grade 10",
+  })
+
   // Mock data for now
   const [videos] = useState([
     {
@@ -55,18 +62,18 @@ export default function VideosPage() {
             All Grades
           </Link>
           <span className="mx-2 text-gray-400">/</span>
-          <Link href={`/grades/1/subjects`} className="text-blue-600 hover:text-blue-800">
-            Subjects
+          <Link href={`/grades/10/subjects`} className="text-blue-600 hover:text-blue-800">
+            {topicInfo.gradeName} Subjects
           </Link>
           <span className="mx-2 text-gray-400">/</span>
           <Link href={`/subjects/1/topics`} className="text-blue-600 hover:text-blue-800">
-            Topics
+            {topicInfo.subjectName} Topics
           </Link>
           <span className="mx-2 text-gray-400">/</span>
-          <span className="text-gray-600">Videos</span>
+          <span className="text-gray-600">{topicInfo.name} Videos</span>
         </nav>
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Algebraic Expressions Videos</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{topicInfo.name} Videos</h1>
         <p className="text-lg text-gray-600">Watch video lessons to master algebraic expressions</p>
       </div>
 
